@@ -1,7 +1,7 @@
 name: Release module
 on:
   push:
-    tags: ["v*"] # semver format
+    tags: ["*"] # semver format
 
 permissions:
   contents: read # needed for checkout
