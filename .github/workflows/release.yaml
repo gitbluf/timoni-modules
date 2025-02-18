@@ -26,7 +26,7 @@ jobs:
           timoni mod push ./argo-application \
             oci://ghcr.io/${{ github.repository_owner }}/argo-application \
             --version ${{ github.ref_name }} \
-            --creds ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
+            --creds ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }} \
             --latest \
             -a 'org.opencontainers.image.licenses=Apache-2.0' \
             -a 'org.opencontainers.image.source=https://github.com/${{ github.repository }}' \
