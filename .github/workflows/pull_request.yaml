@@ -1,0 +1,20 @@
+name: Pull Request validation
+
+on:
+  workflow_dispatch:
+  pull_request:
+
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup Timoni
+        uses: stefanprodan/timoni/actions/setup@main
+      - name: Lint
+        run: |
+          timoni mod lint ./argo-application --values ./argo-application/debug_values.cue
+      - name: Test instance build
+        run: |
+          timoni build -n testing test ./argo-application --values ./argo-application/debug_values.cue
